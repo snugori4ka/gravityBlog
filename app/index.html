@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title></title>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" href="styles/bootstrap.css"/>
+        <link rel="stylesheet" href="styles/main.css"/>
+    </head>
+    <body>
+
+        <div id="container">
+
+            <div id="header" >
+
+                <header>
+                    <h1 class="Three-Dee">Gravity Blog</h1>
+                    <div id="createTool" class="tools" >
+                        <input  id="new-title" type="text" placeholder="title"/>
+                        <textarea id="new-content"  rows="3" type="text" placeholder="content"></textarea>
+                        <div id="dropbox">Drop your images here...</div>
+                        <br/>
+                        <output id="list"></output>
+                        <button id="new-article"class="btn"  type="button">Submit</button>
+                    </div>
+                    <button class="btn"  id="add-article" type="button"><i class="icon-plus-sign"></i></button>
+                </header>
+
+            </div>
+
+            <div id="blog">
+            </div>
+
+        </div>
+
+        <!-- Template -->
+        <script type="text/template" id="article-template">
+            
+            <label><%- title %></label>
+            <p><%- content %></p>
+            <% if(images != null ) {%>
+            <% if (images instanceof Array){ %>
+            <% for (ind in images) {%>
+                <img src="http://localhost:8080/BlogWS/resources/article/uploads/<%- images[ind]%>" /><br>
+           <% } %>
+            <% } else {%>
+                <img src="http://localhost:8080/BlogWS/resources/article/uploads/<%- images%>" /><br>
+                 <% } %>
+                 <%}%>
+
+            <!--<button class="btn" id = "edit-article" type="button">Edit</button> -->
+            <button class="btn" id = "delete-article" type="button">Delete</button>
+
+            <div class="tools edit">
+                <input class="edit-title"  type="text" value="<%- title %>" />
+                <textarea class="edit-content" rows="3" type="text" ><%- content %></textarea>               
+                <button class="btn edit-article" type="button">modify</button>
+            </div>
+
+        </script>
+
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+
+        <!-- build:js scripts/scripts.js -->
+        <script src="scripts/vendor/jquery.min.js"></script>
+        <script src="scripts/vendor/lodash.min.js"></script>
+        <script src="scripts/vendor/backbone-min.js"></script>
+        <script src="scripts/main.js"></script>
+        <script src="scripts/views/application-view.js"></script>
+        <script src="scripts/models/application-model.js"></script>
+        <script src="scripts/collections/application-collection.js"></script>
+        <script src="scripts/views/article-view.js"></script>
+        <script src="scripts/models/article-model.js"></script>
+        <script src="scripts/collections/article-collection.js"></script>
+        <script src="scripts/routes/application-router.js"></script>
+        <!-- endbuild -->
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>
