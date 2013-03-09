@@ -42,6 +42,7 @@ gravityBlog.Views.applicationView = Backbone.View.extend({
 	},
 
 	remove : function(){
+    console.log("delete from collection");
 	},
 
 	reset : function(){       
@@ -84,7 +85,8 @@ gravityBlog.Views.applicationView = Backbone.View.extend({
 
    resetTools :function(){
       $("#new-title").val("");
-      $("#new-content").val("");      
+      $("#new-content").val(""); 
+      $("list img").val("");     
    },
 
    hideTools : function(){

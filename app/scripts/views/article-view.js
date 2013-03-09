@@ -16,6 +16,12 @@ gravityBlog.Views.articleView = Backbone.View.extend({
 
 	initialize: function() {
 	 	this.render();
+        this.model.bind('remove', this.remove, this);
+    },
+
+    remove: function () {
+        console.log("Called remove event on model");
+        $(this.el).remove();
     },
 
     render: function() {
@@ -45,7 +51,12 @@ gravityBlog.Views.articleView = Backbone.View.extend({
    deleteArticle: function(){
     console.log("delete");
     var this_art = this;
-    this_art.model.collection.remove(this);    
+    console.log(this_art.model.collection);
+    console.log(this.model);
+    this.model.destroy({success: function(model, response) {
+        console.log("destroyed");
+        }});
+    //this_art.model.collection.remove(this.model);    
    },
 
     showEditTools : function(){
